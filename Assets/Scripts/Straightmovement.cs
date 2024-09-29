@@ -6,7 +6,7 @@ using UnityEngine.Pool;
 public class Straightmovement : MovementBase
 {
     [Header("Movement Settings")]
-    public float speed = 5f; // Speed of the balloon movement
+    public float speed = 5f; 
     private int direction; // -1 for left, 1 for right
 
     private Camera mainCamera;
@@ -15,7 +15,7 @@ public class Straightmovement : MovementBase
     {
         mainCamera = Camera.main;
 
-        // Randomly choose to start on the left or right side of the screen
+        
         if (Random.Range(0, 2) == 0)
         {
             direction = 1; // Move right
@@ -30,7 +30,7 @@ public class Straightmovement : MovementBase
 
     private void Update()
     {
-        // Move horizontally based on direction
+        
         transform.Translate(Vector2.right * speed * Time.deltaTime * direction);
 
         // Check if the balloon has moved off the screen

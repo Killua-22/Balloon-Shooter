@@ -3,12 +3,12 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText; // Reference to the TextMeshProUGUI component
+    public TextMeshProUGUI scoreText; 
     private int score = 0;
 
     private void Start()
     {
-        // Initialize the score display
+        
         UpdateScoreText();
     }
 
@@ -20,6 +20,6 @@ public class ScoreManager : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        scoreText.text = "Score: " + score.ToString(); // Update the score text
+        scoreText.text = "Score: " + score.ToString(); 
     }
 }

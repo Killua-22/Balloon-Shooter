@@ -17,16 +17,16 @@ public class BalloonSpawner : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-        // Start by spawning one balloon
+        
         SpawnBalloon();
     }
 
     private void Update()
     {
-        // Increment time since the last spawn
+        
         timeSinceLastSpawn += Time.deltaTime;
 
-        // Spawn new balloons if the time interval has passed and we haven't reached the max limit
+        
         if (timeSinceLastSpawn >= spawnInterval && currentBalloonCount < maxBalloonsOnScreen)
         {
             SpawnBalloon();
@@ -36,25 +36,24 @@ public class BalloonSpawner : MonoBehaviour
 
     public void SpawnBalloon()
     {
-        // Calculate the Y spawn position off the top of the screen to avoid the arrow
-        float spawnRangeY = mainCamera.orthographicSize; // Vertical range for the Y-axis
         
-        // Offset Y position so balloons are above the arrow
-        float posY = Random.Range(spawnRangeY, spawnRangeY + 2f); // Ensure they spawn higher up
+        float spawnRangeY = mainCamera.orthographicSize; 
+        
+        
+        float posY = Random.Range(spawnRangeY, spawnRangeY + 2f); 
         
         Vector3 spawnPosition;
 
-        // Randomly decide if the balloon should spawn on the left or right side, outside the screen horizontally
-        if (Random.Range(0, 2) == 0) // 50% chance of spawning on the left
+        if (Random.Range(0, 2) == 0) 
         {
             // Left side spawn (off-screen)
-            float leftSpawnX = -mainCamera.orthographicSize * mainCamera.aspect - 1f; // Off-screen on the left
+            float leftSpawnX = -mainCamera.orthographicSize * mainCamera.aspect - 1f; 
             spawnPosition = new Vector3(leftSpawnX, posY, 0f);
         }
         else
         {
             // Right side spawn (off-screen)
-            float rightSpawnX = mainCamera.orthographicSize * mainCamera.aspect + 1f; // Off-screen on the right
+            float rightSpawnX = mainCamera.orthographicSize * mainCamera.aspect + 1f; 
             spawnPosition = new Vector3(rightSpawnX, posY, 0f);
         }
 
@@ -64,7 +63,7 @@ public class BalloonSpawner : MonoBehaviour
             GameObject balloon = Instantiate(balloonPrefab, spawnPosition, Quaternion.identity);
             AssignRandomMovement(balloon);
 
-            // Track the balloon count
+            
             currentBalloonCount++;
             activeBalloons.Add(balloon);
 

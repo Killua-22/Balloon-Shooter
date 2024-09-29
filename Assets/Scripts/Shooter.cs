@@ -33,7 +33,6 @@ public class Shooter : MonoBehaviour
             ShootArrow(targetPos);
         }
 
-        // Check if the arrow has moved off-screen and respawn if necessary
         if (currentArrow != null)
         {
             Arrow arrowScript = currentArrow.GetComponent<Arrow>();
@@ -44,9 +43,6 @@ public class Shooter : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Spawns the arrow at the starting position.
-    /// </summary>
     private void SpawnArrow()
     {
         currentArrow = Instantiate(arrowPrefab, arrowStartPoint.position, Quaternion.identity);
@@ -57,10 +53,6 @@ public class Shooter : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Shoots the arrow toward the target position.
-    /// </summary>
-    /// <param name="targetPosition">The position to shoot the arrow toward.</param>
     private void ShootArrow(Vector3 targetPosition)
     {
         if (currentArrow == null)
@@ -78,10 +70,6 @@ public class Shooter : MonoBehaviour
         
     }
 
-    /// <summary>
-    /// Converts the mouse position to world position.
-    /// </summary>
-    /// <returns>World position corresponding to the mouse click/tap.</returns>
     private Vector3 GetWorldPosition()
     {
 
@@ -92,9 +80,6 @@ public class Shooter : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Respawns the arrow back to the starting position.
-    /// </summary>
     private void RespawnArrow()
     {
         Destroy(currentArrow);

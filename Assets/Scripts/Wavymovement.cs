@@ -5,20 +5,19 @@ using UnityEngine;
 public class Wavymovement : MovementBase
 {
     [Header("Wavy Movement Settings")]
-    public float speed = 5f; // Speed of the balloon
-    public float amplitude = 2f; // Amplitude of the wavy movement
-    public float frequency = 1f; // Frequency of the wavy movement
-
+    public float speed = 5f; 
+    public float amplitude = 2f; 
+    public float frequency = 1f; 
     private Camera mainCamera;
 
     private void Start()
     {
         mainCamera = Camera.main;
 
-        // Set initial position off-screen
+        
         transform.position = new Vector3(
-            Random.Range(-mainCamera.orthographicSize * mainCamera.aspect - 1f, -1f), // Left side spawn
-            Random.Range(-mainCamera.orthographicSize, mainCamera.orthographicSize), // Random Y position within screen height
+            Random.Range(-mainCamera.orthographicSize * mainCamera.aspect - 1f, -1f), 
+            Random.Range(-mainCamera.orthographicSize, mainCamera.orthographicSize),
             0f);
     }
 
@@ -31,7 +30,7 @@ public class Wavymovement : MovementBase
         float yMovement = Mathf.Sin(Time.time * frequency) * amplitude;
         transform.position += new Vector3(0, yMovement, 0) * Time.deltaTime;
 
-        // Check if the balloon has moved off the right side of the screen
+        
         if (transform.position.x > mainCamera.orthographicSize * mainCamera.aspect + 1f)
         {
             Respawn();
@@ -42,8 +41,8 @@ public class Wavymovement : MovementBase
     {
         // Reset position to just off the left side of the screen
         transform.position = new Vector3(
-            Random.Range(-mainCamera.orthographicSize * mainCamera.aspect - 1f, -1f), // Left side spawn
-            Random.Range(-mainCamera.orthographicSize, mainCamera.orthographicSize), // Random Y position within screen height
+            Random.Range(-mainCamera.orthographicSize * mainCamera.aspect - 1f, -1f), 
+            Random.Range(-mainCamera.orthographicSize, mainCamera.orthographicSize), 
             0f);
     }
 }

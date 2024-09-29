@@ -22,6 +22,6 @@ public class Balloon : MonoBehaviour
         }
     }
 
-    // Add methods here for popping the balloon, like when hit by an arrow.
+    
 }
 
